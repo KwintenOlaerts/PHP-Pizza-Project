@@ -14,6 +14,8 @@
     <source>
 </head>
 <body class="grey lighten-4">
+<div class="output">
+</div>
 <nav class="white z-depth-0">
 <div class="container">
 <a href="#" class="brand-logo brand-text">248 Quotes</a>

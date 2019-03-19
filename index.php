@@ -1,4 +1,14 @@
 <?php
+
+
+//  2 options for database connection: MySQLI(improved MySQL) or PDO 
+$conn = mysqli_connect('localhost', 'kwinten', '', 'rapper-quotes');
+
+// check connection 
+if(!$conn){
+    echo 'Connection error ' . mysqli_connect_error();
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -7,4 +17,6 @@
 
 <?php include('frameworks/footer.php'); ?>
 
+
 </html>
+
