@@ -18,9 +18,9 @@
 </div>
 <nav class="white z-depth-0">
 <div class="container">
-<a href="#" class="brand-logo brand-text">248 Quotes</a>
+<a href="index.php" class="brand-logo brand-text">248 Quotes</a>
 <ul id="nov-mobile"> class="right hide-on-small-and-down">
-<li><a href="#" class="btn brand" z-depth-0>Voeg quote toe</a></li>
+<li><a href="frameworks/add.php" class="btn brand" z-depth-0>Voeg quote toe</a></li>
 
 </ul>
 </div>

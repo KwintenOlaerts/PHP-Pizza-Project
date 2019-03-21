@@ -1,5 +1,9 @@
 <?php
 
+include ('../db_connect.php');
+
+// Een directory terug in uw mappen: ../
+
 $title = $email = $ingredients = '';
 $errors = array('email'=>'', 'title'=>'','ingredients'=>'');
 
@@ -23,7 +27,7 @@ if(isset($_POST['submit'])){
   }
   else {
    $title = $_POST['title'];
-    if(!preg_match('/^[*a-zA-Z\s]', $title)){
+    if(!preg_match('/^[*a-zA-Z\s]/', $title)){
       $errors['title'] = 'Gebruik een echte naam';
     }
     }
@@ -34,16 +38,37 @@ if(isset($_POST['submit'])){
   }
   else {
     $ingredients = $_POST['ingredients'];
-    if(!preg_match('/^[a-zA-Z\s]+)(,\s*[a-zA-Z\s]*$/', $ingredients)){
+    if(!preg_match('/^([a-zA-Z\s]+)(,\s*[a-zA-Z\s]*)*$/', $ingredients)){
       $errors['ingredients'] = 'Voer een quote in, met enkel woorden';
   }
   }
   if(array_filter($errors)){
+    // echo 'errors in the form';
 
   } else {
-    header('Location: index.php');
+
+    // 'echo form is valid';
+    header('location: ../index.php');
   }
-} // END OF POST CHECK
+
+    $email = mysqli_real_escape_string($conn, $_POST['email']);
+    $title = mysqli_real_escape_string($conn, $_POST['title']);
+    $ingredients = mysqli_real_escape_string($conn, $_POST['ingredients']);
+    
+    // create sql
+  $sql = "INSERT INTO quotes(title,email,quotes) VALUES('$title','$email','$ingredients')";
+
+   //save to db and check
+   if(mysqli_query($conn, $sql)){
+     //succes
+     header('location: ../index.php');
+   } else {
+     //error
+     echo 'query error: ' .mysqli_error($conn);
+   }
+
+  }
+ // END OF POST CHECK
 
 
 
